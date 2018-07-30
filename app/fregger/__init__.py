@@ -136,7 +136,7 @@ class Fregger(object):
                 # parse request args, in: body
                 for a in parser.args:
                     param = dict()
-                    param['name'] = a.name
+                    param['name'] = _convert_name_with_help(a.name, a.help)
                     param['in'] = _convert_keyword(a.location)
                     param['description'] = a.help or ''
                     param['type'] = _convert_keyword(a.type.__name__)
@@ -255,5 +255,14 @@ def _convert_keyword(word):
     if word in _keywords_mapping:
         return _keywords_mapping[word]
     return word
+
+
+def _convert_name_with_help(name, help_text, separator='(%s)'):
+    if not help_text:
+        return name
+    # name_with_help = separator.join([name, help_text])
+    name_with_help = name + separator % help_text
+    return name_with_help
+
 
 __all__ = [Fregger.__name__, Fregger.generate_doc.__name__]
