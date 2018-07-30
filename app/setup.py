@@ -4,7 +4,7 @@
 from setuptools import setup
 setup(
     name='Fregger',
-    version='0.10.6',
+    version='0.10.7',
     keywords=('flask', 'flask-restful', 'swagger', 'automatically'),
     description='Automatically generate Swagger docs for Flask-Restful.',
     license='MIT',
